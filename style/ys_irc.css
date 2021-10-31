@@ -1,0 +1,222 @@
+/* 载入字体 */
+@font-face {
+    font-family: ysfont;
+    src: url(../res/zh-cn.ttf);
+}
+/* 使用字体 */
+body {
+    margin: 0;
+    padding: 10px;
+    white-space: nowrap;
+    user-select: none;
+    font-family: ysfont;
+}
+/* 窗口过窄 */
+@media screen and (max-width: 770px) {
+    body {
+        background-color: khaki;
+    }
+    #filter,
+    #character {
+        display: none;
+    }
+    h1#wne {
+        display: block;
+    }
+}
+/* input */
+input {
+    margin: 5px;
+    padding: 10px;
+    user-select: none;
+    font-family: ysfont;
+}
+/* 禁止拖拽 */
+img {
+    -webkit-user-drag: none;
+}
+/* 字体大小 */
+span {
+    font-size: large;
+}
+.chac-label span {
+    font-size: 100%;
+}
+/* 灰色不突兀 */
+ul, h3 {
+    margin-top: 3px;
+    margin-bottom: 0;
+    color: rgb(51, 51, 51);
+}
+/* li基础 */
+ul li {
+    list-style: none;
+    float: left;
+    outline: none;
+}
+/* label高度 */
+ul.elem-navbar li,
+ul.weap-navbar li {
+    height: 20px;
+}
+ul.rev-navbar li {
+    height: 30px;
+}
+ul.chac-navbar li {
+    height: 50px;
+}
+/* 过滤器 隐藏checkbox */
+#element input,
+#weapon input,
+#releaseVer input,
+#wne {
+    display: none;
+}
+/* 过滤器label */
+.elem-label,
+.weap-label,
+.rev-label {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 0px;
+    padding-left: 7px;
+    padding-right: 5px;
+    background-color: rgb(92, 92, 92);
+    filter: grayscale(70%);
+    color: white;
+}
+.rev-navbar .rev-label {
+    margin-left: 7px;
+    margin-right: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+/* 过滤器img */
+.elem-label img,
+.weap-label img {
+    height: 40px;
+}
+/* 按钮定位 */
+#character input[type="button"],
+#toast {
+    margin: 5px;
+    outline: none;
+    border-radius: 5px;
+    position: relative;
+    left: 50px;
+    /* top: -25px; */
+}
+/* 角色卡checkbox定位 */
+.chac-label input {
+    float: right;
+}
+/* 角色卡li */
+.chac-navbar li {
+    margin: 5px;
+    padding: 5px;
+    width: 140px;
+    background-color: #D19D78;
+    border-radius: 8px;
+}
+/* 角色卡label大小继承li */
+.chac-label,
+.fura-label {
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    padding-left: 2px;
+}
+/* 角色卡img */
+.chac-label img,
+.fura-label img {
+    position: relative;
+    height: 80%;
+    top: 10%;
+}
+/* 角色卡span */
+.chac-label span,
+.fura-label span {
+    position: relative;
+    top: -20%;
+    padding-left: 4px;
+    line-height: 50px;
+}
+/* 元素过滤器 checkbox -> label */
+#anemo:checked ~ .elem-navbar .anemo-lab,
+#cryo:checked ~ .elem-navbar .cryo-lab,
+#dendro:checked ~ .elem-navbar .dendro-lab,
+#electro:checked ~ .elem-navbar .electro-lab,
+#geo:checked ~ .elem-navbar .geo-lab,
+#hydro:checked ~ .elem-navbar .hydro-lab,
+#pyro:checked ~ .elem-navbar .pyro-lab {
+    filter: none;
+    color: rgb(51, 51, 51);
+}
+#anemo:checked ~ .elem-navbar .anemo-lab {
+    background-color: #66FFCC;
+}
+#cryo:checked ~ .elem-navbar .cryo-lab {
+    background-color: #99FFFF;
+}
+#dendro:checked ~ .elem-navbar .dendro-lab {
+    background-color: #BAFF33;
+}
+#electro:checked ~ .elem-navbar .electro-lab {
+    background-color: #E19BFF;
+}
+#geo:checked ~ .elem-navbar .geo-lab {
+    background-color: #FFCC66;
+}
+#hydro:checked ~ .elem-navbar .hydro-lab {
+    background-color: #33CCFF;
+}
+#pyro:checked ~ .elem-navbar .pyro-lab {
+    background-color: #FF9900;
+}
+/* 武器、版本过滤器 checkbox -> label */
+#sword:checked ~ .weap-navbar .sword-lab,
+#claymore:checked ~ .weap-navbar .claymore-lab,
+#polearm:checked ~ .weap-navbar .polearm-lab,
+#catalyst:checked ~ .weap-navbar .catalyst-lab,
+#bow:checked ~ .weap-navbar .bow-lab,
+#v10:checked ~ .rev-navbar .v10-lab,
+#v11:checked ~ .rev-navbar .v11-lab,
+#v12:checked ~ .rev-navbar .v12-lab,
+#v13:checked ~ .rev-navbar .v13-lab,
+#v14:checked ~ .rev-navbar .v14-lab,
+#v15:checked ~ .rev-navbar .v15-lab,
+#v16:checked ~ .rev-navbar .v16-lab,
+#v20:checked ~ .rev-navbar .v20-lab,
+#v21:checked ~ .rev-navbar .v21-lab,
+#v22:checked ~ .rev-navbar .v22-lab,
+#v66:checked ~ .rev-navbar .v66-lab {
+    background-color: #FA7298;
+    filter: none;
+}
+/* input */
+input[type=checkbox],
+input[type=radio] {
+	height: 0
+}
+input[type=checkbox]::before,
+input[type=radio]::before {
+	content: "";
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	/* border: 1px solid #FFF; */
+	border-radius: 50%;
+}
+input[type=checkbox]:checked::before,
+input[type=radio]:checked::before {
+	background-color: #FFF;
+}
+input[type=checkbox]:disabled::before,
+input[type=radio]:disabled::before {
+	background-color: grey;
+	border: none;
+}
+input[type=text]:disabled {
+	border-bottom-color: grey
+}

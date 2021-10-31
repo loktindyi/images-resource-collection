@@ -1,0 +1,164 @@
+/* 载入字体 */
+@font-face {
+    font-family: ysfont;
+    src: url(../res/zh-cn.ttf);
+}
+/* 使用字体 */
+body {
+    margin: 0;
+    padding: 10px;
+    white-space: nowrap;
+    user-select: none;
+    font-family: ysfont;
+}
+/* 窗口过窄 */
+@media screen and (max-width: 500px) {
+    body {
+        background-color: khaki;
+    }
+    #filter,
+    #emojis {
+        display: none;
+    }
+    h1#wne {
+        display: block;
+    }
+}
+/* input */
+input {
+    margin: 5px;
+    padding: 10px;
+    user-select: none;
+    font-family: ysfont;
+}
+/* 禁止拖拽 */
+img {
+    -webkit-user-drag: none;
+}
+/* 字体大小 */
+span {
+    font-size: large;
+}
+/* 灰色不突兀 */
+ul, h3 {
+    margin-top: 3px;
+    margin-bottom: 0;
+    color: rgb(51, 51, 51);
+}
+/* li基础 */
+ul li {
+    list-style: none;
+    float: left;
+    outline: none;
+}
+/* label高度 */
+ul.series-navbar li {
+    height: 20px;
+}
+/* 过滤器 隐藏checkbox */
+#series input,
+#wne {
+    display: none;
+}
+/* 过滤器label */
+.series-label {
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-top: 6px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 8px;
+    background-color: rgb(92, 92, 92);
+    filter: grayscale(70%);
+    color: white;
+}
+/* 过滤器img */
+.series-label img {
+    border-radius: 10%;
+    height: 40px;
+}
+/* 按钮定位 */
+#emojis input[type="button"],
+#toast {
+    margin: 5px;
+    outline: none;
+    border-radius: 5px;
+    position: relative;
+    left: 50px;
+    /* top: -25px; */
+}
+/* 表情卡checkbox定位 */
+.emojis-label input {
+    float: right;
+}
+/* 表情卡li */
+.emojis-navbar li {
+    margin: 5px;
+    padding: 5px;
+    width: 200px;
+    height: 70px;
+    background-color: #D19D78;
+    border-radius: 8px;
+}
+/* 表情卡label大小继承li */
+.emojis-label {
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    padding-left: 2px;
+}
+/* 表情卡img */
+.emojis-label img {
+    position: absolute;
+    height: 80%;
+    top: 10%;
+    border-radius: 10%;
+    z-index: 10;
+}
+/* .emojis-label img:hover {
+    height: 160%;
+    top: -30%;
+    left: -10%;
+} */
+/* 表情卡span */
+.emojis-label span {
+    position: absolute;
+    top: 45%;
+    left: 60px;
+    padding-left: 4px;
+    font-size: 100%;
+    line-height: 10px;
+}
+/* 过滤器 checkbox -> label */
+#s1:checked ~ .series-navbar .s1-lab,
+#s2:checked ~ .series-navbar .s2-lab,
+#s53:checked ~ .series-navbar .s53-lab {
+    background-color: #FA7298;
+    filter: none;
+}
+/* input */
+input[type=checkbox],
+input[type=radio] {
+	height: 0
+}
+input[type=checkbox]::before,
+input[type=radio]::before {
+	content: "";
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	/* border: 1px solid #FFF; */
+	border-radius: 50%;
+}
+input[type=checkbox]:checked::before,
+input[type=radio]:checked::before {
+	background-color: #FFF;
+}
+input[type=checkbox]:disabled::before,
+input[type=radio]:disabled::before {
+	background-color: grey;
+	border: none;
+}
+input[type=text]:disabled {
+	border-bottom-color: grey
+}
