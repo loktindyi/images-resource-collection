@@ -22,6 +22,7 @@ body {
     }
     h1#wne {
         display: block;
+        white-space: normal;
     }
 }
 /* input */
