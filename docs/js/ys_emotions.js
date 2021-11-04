@@ -9,7 +9,12 @@ $.ajax({
     dataType: 'json',
     async: false,
     success: res => {
-        ysEmojis = res.data.list.filter(e => ysEmojiIds.includes(e.id))//e.is_available)//
+        ysEmojis = res.data.list
+            // 仅原神相关表情
+            .filter(e => ysEmojiIds.includes(e.id))
+        // 米游社表情
+        // .filter(e => ysEmojiIds.includes(e.is_available)
+        // 向 原神·V玩家 中添加一个 崩坏3 的表情
         ysEmojis.forEach(e => {
             if (e.id === 7) e.list.push({
                 "id": 473,

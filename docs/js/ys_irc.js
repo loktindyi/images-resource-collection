@@ -1,9 +1,35 @@
 // 基础函数与变量
 const world = {
     watch: (element, listener, dowhat) => { $(document).on(listener, element, dowhat) },
-    el: ['anemo', 'cryo', 'dendro', 'electro', 'geo', 'hydro', 'pyro'],
-    wl: ['sword', 'claymore', 'polearm', 'catalyst', 'bow'],
-    rv: ['1.0', '1.1', '1.2', '1.3', '1.4', '1.5', '1.6', '2.0', '2.1', '2.2', '6.6']
+    el: {
+        anemo: '风',
+        cryo: '冰',
+        dendro: '草',
+        electro: '雷',
+        geo: '岩',
+        hydro: '水',
+        pyro: '火'
+    },
+    wl: {
+        sword: '单手剑',
+        claymore: '双手剑',
+        polearm: '长柄武器',
+        catalyst: '法器',
+        bow: '弓'
+    },
+    rv: {
+        v10: '1.0',
+        v11: '1.1',
+        v12: '1.2',
+        v13: '1.3',
+        v14: '1.4',
+        v15: '1.5',
+        v16: '1.6',
+        v20: '2.0',
+        v21: '2.1',
+        v22: '2.2',
+        v66: '6.6',
+    }
 }
 // say
 const say = msg => {
@@ -29,7 +55,7 @@ const selectAll = (bool) => { $(`.chac-navbar li${bool ? '[style*="block"]' : ''
 const resetFilter = () => {
     // selectAll(false);
     $('input[name="element"]:checked, input[name="weapon"]:checked, input[name="releaseVer"]:checked').each(function () { this.checked = false })
-    getCharacter(world.el, world.wl, world.rv)
+    getCharacter(Object.keys(world.el), Object.keys(world.wl), Object.values(world.rv))
 }
 // 导出
 const exportToClip = () => {
@@ -55,12 +81,18 @@ ${cha.Avatar !== null ? `$wClient.DownloadFile('${cha.Avatar}', $saveDir + '${id
         } else say('导出被取消')
     } else say('还未选择角色')
 }
-// 初始化，读取所有角色并渲染
+// 初始化过滤器，读取所有角色并渲染
 const loadAllCharacters = () => {
+    Object.entries(world.el).forEach(e => { $('ul.elem-navbar').append($(`<li><label class="elem-label ${e[0]}-lab" for="${e[0]}"><span>${e[1]}</span><img src="./img/elements/${e[0]}.png" alt="${e[1]}"></label></li>`)) })
+    Object.entries(world.wl).forEach(w => { $('ul.weap-navbar').append($(`<li><label class="weap-label ${w[0]}-lab" for="${w[0]}"><span>${w[1]}</span><img src="./img/weapons/${w[0]}.png" alt="${w[1]}"></label></li>`)) })
+    Object.entries(world.rv).forEach(v => { $('ul.rev-navbar').append($(`<li><label class="rev-label ${v[0]}-lab" for="${v[0]}"><span>${v[1]}</span></label></li>`)) })
     Object.entries(imgDataAvailable).forEach(c => { $('ul.chac-navbar').append($(`<li id="${c[0]}-li" style="display: block;"><label class="chac-label" for="${c[0]}"><input type="checkbox" id="${c[0]}"><img src="./img/icon/${c[1].IconName}.png" alt="${c[1].Name}"><span>${c[1].Name}</span></label></li>`)) })
     $('#FuraVetind-li').html(`<label class="fura-label"><input type="checkbox" style="display: none;"><img src="./img/icon/FuraVetind.png" alt="风风轮舞"><span>风风轮舞</span></label>`)
 }
-$('ul.chac-navbar').ready(() => { loadAllCharacters() })
+$('ul.chac-navbar').ready(() => {
+    loadAllCharacters()
+    say(`这个工具应在电脑上使用，手机只能看看...`)
+})
 // 读取过滤器
 const loadFilter = () => {
     let eleList = [], weaList = [], revList = []
@@ -68,6 +100,6 @@ const loadFilter = () => {
     $('#weapon input:checked').each(function () { weaList.push(this.id) })
     $('#releaseVer input:checked').each(function () { revList.push(this.id) })
     revList = revList.map(v => v[1] + '.' + v[2])
-    return [eleList.length ? eleList : world.el, weaList.length ? weaList : world.wl, revList.length ? revList : world.rv]
+    return [eleList.length ? eleList : Object.keys(world.el), weaList.length ? weaList : Object.keys(world.wl), revList.length ? revList : Object.values(world.rv)]
 }
 world.watch('#element input, #weapon input, #releaseVer input', 'change', () => { getCharacter(...loadFilter()) })
