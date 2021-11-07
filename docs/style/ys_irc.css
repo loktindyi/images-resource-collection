@@ -17,6 +17,7 @@ body {
         background-color: khaki;
     }
     #filter,
+    #btns,
     #character {
         display: none;
     }
@@ -40,7 +41,8 @@ img {
 span {
     font-size: large;
 }
-.chac-label span {
+.chac-label span,
+.fura-label span {
     font-size: 100%;
 }
 /* 灰色不突兀 */
@@ -56,14 +58,14 @@ ul li {
     outline: none;
 }
 /* label高度 */
-ul.elem-navbar li,
-ul.weap-navbar li {
+ul.elem-filter li,
+ul.weap-filter li {
     height: 20px;
 }
-ul.rev-navbar li {
+ul.rev-filter li {
     height: 30px;
 }
-ul.chac-navbar li {
+ul.chac-list li {
     height: 50px;
 }
 /* 过滤器 隐藏checkbox */
@@ -87,7 +89,7 @@ ul.chac-navbar li {
     filter: grayscale(70%);
     color: white;
 }
-.rev-navbar .rev-label {
+.rev-filter .rev-label {
     margin-left: 7px;
     margin-right: 7px;
     padding-left: 10px;
@@ -99,7 +101,7 @@ ul.chac-navbar li {
     height: 40px;
 }
 /* 按钮定位 */
-#character input[type="button"],
+#btns input[type="button"],
 #toast {
     margin: 5px;
     outline: none;
@@ -113,7 +115,7 @@ ul.chac-navbar li {
     float: right;
 }
 /* 角色卡li */
-.chac-navbar li {
+.chac-list li {
     margin: 5px;
     padding: 5px;
     width: 140px;
@@ -144,54 +146,34 @@ ul.chac-navbar li {
     line-height: 50px;
 }
 /* 元素过滤器 checkbox -> label */
-#anemo:checked ~ .elem-navbar .anemo-lab,
-#cryo:checked ~ .elem-navbar .cryo-lab,
-#dendro:checked ~ .elem-navbar .dendro-lab,
-#electro:checked ~ .elem-navbar .electro-lab,
-#geo:checked ~ .elem-navbar .geo-lab,
-#hydro:checked ~ .elem-navbar .hydro-lab,
-#pyro:checked ~ .elem-navbar .pyro-lab {
+input.elem:checked ~ label {
     filter: none;
     color: rgb(51, 51, 51);
 }
-#anemo:checked ~ .elem-navbar .anemo-lab {
+#anemo:checked ~ label {
     background-color: #66FFCC;
 }
-#cryo:checked ~ .elem-navbar .cryo-lab {
+#cryo:checked ~ label {
     background-color: #99FFFF;
 }
-#dendro:checked ~ .elem-navbar .dendro-lab {
+#dendro:checked ~ label {
     background-color: #BAFF33;
 }
-#electro:checked ~ .elem-navbar .electro-lab {
+#electro:checked ~ label {
     background-color: #E19BFF;
 }
-#geo:checked ~ .elem-navbar .geo-lab {
+#geo:checked ~ label {
     background-color: #FFCC66;
 }
-#hydro:checked ~ .elem-navbar .hydro-lab {
+#hydro:checked ~ label {
     background-color: #33CCFF;
 }
-#pyro:checked ~ .elem-navbar .pyro-lab {
+#pyro:checked ~ label {
     background-color: #FF9900;
 }
 /* 武器、版本过滤器 checkbox -> label */
-#sword:checked ~ .weap-navbar .sword-lab,
-#claymore:checked ~ .weap-navbar .claymore-lab,
-#polearm:checked ~ .weap-navbar .polearm-lab,
-#catalyst:checked ~ .weap-navbar .catalyst-lab,
-#bow:checked ~ .weap-navbar .bow-lab,
-#v10:checked ~ .rev-navbar .v10-lab,
-#v11:checked ~ .rev-navbar .v11-lab,
-#v12:checked ~ .rev-navbar .v12-lab,
-#v13:checked ~ .rev-navbar .v13-lab,
-#v14:checked ~ .rev-navbar .v14-lab,
-#v15:checked ~ .rev-navbar .v15-lab,
-#v16:checked ~ .rev-navbar .v16-lab,
-#v20:checked ~ .rev-navbar .v20-lab,
-#v21:checked ~ .rev-navbar .v21-lab,
-#v22:checked ~ .rev-navbar .v22-lab,
-#v66:checked ~ .rev-navbar .v66-lab {
+.weap:checked ~ label,
+.rev:checked ~ label {
     background-color: #FA7298;
     filter: none;
 }
