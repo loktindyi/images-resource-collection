@@ -16,9 +16,7 @@ body {
     body {
         background-color: khaki;
     }
-    #filter,
-    #btns,
-    #character {
+    #app {
         display: none;
     }
     h1#wne {
@@ -101,7 +99,7 @@ ul.chac-list li {
     height: 40px;
 }
 /* 按钮定位 */
-#btns input[type="button"],
+#app input[type="button"],
 #toast {
     margin: 5px;
     outline: none;
@@ -173,7 +171,8 @@ input.elem:checked ~ label {
 }
 /* 武器、版本过滤器 checkbox -> label */
 .weap:checked ~ label,
-.rev:checked ~ label {
+.rev:checked ~ label,
+.elem-filter li:nth-child(0) input:checked ~ label {
     background-color: #FA7298;
     filter: none;
 }
